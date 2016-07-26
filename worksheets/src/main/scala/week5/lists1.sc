@@ -11,7 +11,7 @@ def removeAt[T](n: Int, xs: List[T]): List[T] = {
   def iterate(i: Int, x: List[T]): List[T] = {
     x match {
       case List() => throw new IndexOutOfBoundsException
-      case List(x) => if (i == n) List() else throw new IndexOutOfBoundsException
+      case List(_) => if (i == n) List() else throw new IndexOutOfBoundsException
       case y :: ys => if (i == n) ys else y :: iterate(i + 1, ys)
     }
   }
@@ -27,7 +27,7 @@ removeAt1(2, List('a', 'b', 'c', 'd'))
 
 def flatten(xs: List[Any]): List[Any] = xs match {
   case Nil => Nil
-  case (h:List)::tail => flatten(h):::flatten(tail)
+  case (h:List[Any])::tail => flatten(h):::flatten(tail)
   case h::tail => h::flatten(tail)
 }
 
